@@ -1,0 +1,5 @@
+    1  history 
+    2  time python3 numbers.py 
+    3  more numbers.sh
+    4  time sh numbers.sh
+    5  history > cmds.log

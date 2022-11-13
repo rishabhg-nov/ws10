@@ -1,0 +1,46 @@
+Script started on 2022-11-13 16:41:05-05:00
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ time[K[K[K[Khistory -c
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ history 
+    1  history 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ time python3 numbers.py 
+min 0 max 15835 avg 9.33467921636312
+
+real	0m19.275s
+user	0m18.644s
+sys	0m0.630s
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ more numbers.sh
+#!/bin/bash
+
+cat amazon_reviews_us_Books_v1_02.tsv | awk -F '\t'  '{ if(NR <= 1) {next}; if(min==""){min=max=$9}; if($9>max) {max=$
+9}; if($9<min) {min=$9}; total+=$9; count+=1} END {print "avg " total/count," | max "max," | min " min}'
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ time sh numbers.sh
+avg 9.33468  | max 15835  | min 0
+
+real	0m20.625s
+user	0m20.542s
+sys	0m0.829s
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ history > cmds.log
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ 
+]0;rishabh@sjsu:/mnt/scratch/rishabh/ws10[rishabh@sjsu ws10]$ exit
+
+Script done on 2022-11-13 16:43:30-05:00
+
+Python took slightly less time, taking 19.275 seconds compared to 20.625 seconds.
+It is expected that they will take the same amount of time becuase they both have to scan all the
+lines in the input data file, which is the most expensive part and it applies to both. 
